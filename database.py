@@ -12,8 +12,7 @@ class Database():
             settings['host'],
             settings['database'],
             settings['user'],
-            settings['password']
-            )
+            settings['password'])
 
         cursor = self.db.cursor()
         cursor.execute("SHOW TABLES;")
