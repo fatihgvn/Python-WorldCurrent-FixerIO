@@ -39,7 +39,9 @@ class Database():
                 cursor.execute(sql)
                 lsatid = cursor.lastrowid
 
-                print(lsatid)
+                for short, value in data['rates'].items():
+                    sql = "INSERT INTO totals_records SET total_id=%d, name='%s', value=%f;" & (lsatid, short, value)
+                    cursor.execute(sql)
 
             except Exception as ex:
                 print(ex)
@@ -66,3 +68,4 @@ class Database():
                     print("\n[WARN] MySQLError during execute statement")
 
                 statement = ""
+        self.db.commit()
