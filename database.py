@@ -40,8 +40,8 @@ class Database():
                 lsatid = cursor.lastrowid
 
                 for short, value in data['rates'].items():
-                    print(short, value)
                     sql = "INSERT INTO totals_records SET total_id=%d, name='%s', value=%f;" & (int(lsatid), short, value)
+                    print(sql)
                     cursor.execute(sql)
 
             except Exception as ex:
