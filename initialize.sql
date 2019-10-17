@@ -182,7 +182,7 @@ INSERT INTO `current_info` (`id`, `name`, `short`, `created_at`) VALUES
 (140, 'Tajikistani Somoni', 'TJS', '2019-10-17 19:57:57'),
 (141, 'Turkmenistani Manat', 'TMT', '2019-10-17 19:57:57'),
 (142, 'Tunisian Dinar', 'TND', '2019-10-17 19:57:57'),
-(143, 'Tongan Paʻanga', 'TOP', '2019-10-17 19:57:57'),
+(143, 'Tongan Pa`anga', 'TOP', '2019-10-17 19:57:57'),
 (144, 'Turkish Lira', 'TRY', '2019-10-17 19:57:57'),
 (145, 'Trinidad and Tobago Dollar', 'TTD', '2019-10-17 19:57:57'),
 (146, 'New Taiwan Dollar', 'TWD', '2019-10-17 19:57:57'),
