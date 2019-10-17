@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import MySQLdb
+import MySQLdb, re
 
 class Database():
     db = None
@@ -24,12 +24,25 @@ class Database():
             if tbl[0] in tables:
                 tblCounter += 1
         if tblCounter != len(tables):
-            self.firstSetup()
-
-    def firstSetup(self):
-        with open('initialize.sql') as f:
-            cursor = self.db.cursor()
-            cursor.execute(f)
+            self.exec_sql_file(self.db.cursor(),'initialize.sql')
 
     def __del__(self):
         self.db.close()
+
+    def exec_sql_file(self, cursor, sql_file):
+        statement = ""
+
+        for line in open(sql_file):
+            if re.match(r'--', line):  # ignore sql comment lines
+                continue
+            if not re.search(r';$', line):  # keep appending lines that don't end in ';'
+                statement = statement + line
+            else:  # when you get a line ending in ';' then exec statement and reset for next statement
+                statement = statement + line
+                #print "\n\n[DEBUG] Executing SQL statement:\n%s" % (statement)
+                try:
+                    cursor.execute(statement)
+                except:
+                    print("\n[WARN] MySQLError during execute statement")
+
+                statement = ""
