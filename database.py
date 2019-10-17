@@ -4,6 +4,7 @@
 import MySQLdb
 
 class Database():
+    db = None
     
     def __init__(self, settings):
 
