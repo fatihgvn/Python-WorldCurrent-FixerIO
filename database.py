@@ -34,6 +34,8 @@ class Database():
             sql = "INSERT INTO totals SET t_timestamp=%d, t_base='%s', t_date='%s'" % (data['timestamp'], data['base'], data['date'])
 
             print(sql)
+        else:
+            print("not success")
 
     def exec_sql_file(self, cursor, sql_file):
         statement = ""
