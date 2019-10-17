@@ -33,7 +33,17 @@ class Database():
         if(data['success'] == True):
             sql = "INSERT INTO totals SET t_timestamp=%d, t_base='%s', t_date='%s'" % (data['timestamp'], data['base'], data['date'])
 
-            print(sql)
+            cursor = self.db.cursor()
+
+            try:
+                cursor.execute(sql)
+                lsatid = cursor.lastrowid
+
+                print(lsatid)
+
+            except Exception as ex:
+                print(ex)
+            
         else:
             print("not success")
 
