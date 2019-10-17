@@ -7,12 +7,12 @@ class Database():
     db = None
     
     def __init__(self, settings):
-
         self.db = MySQLdb.connect(
-            settings['host'],
-            settings['database'],
-            settings['user'],
-            settings['password'])
+            host=settings['host'],
+            db=settings['database'],
+            user=settings['user'],
+            passwd=settings['password'],
+            port=3306)
 
         cursor = self.db.cursor()
         cursor.execute("SHOW TABLES;")
