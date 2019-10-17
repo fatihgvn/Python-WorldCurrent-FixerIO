@@ -31,7 +31,7 @@ class Database():
 
     def addRecord(self, data):
         if(data['success'] == True):
-            sql = "INSERT INTO totals SET t_timestamp=%d, t_base='%s', t_date='%s'" % (data['timestamp'], data['base'], data['date'])
+            sql = "INSERT INTO totals SET t_timestamp=%d, t_base='%s', t_date='%s';" % (data['timestamp'], data['base'], data['date'])
 
             cursor = self.db.cursor()
 
@@ -43,6 +43,8 @@ class Database():
 
             except Exception as ex:
                 print(ex)
+
+            self.db.commit()
             
         else:
             print("not success")
