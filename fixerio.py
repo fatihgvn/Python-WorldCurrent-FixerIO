@@ -17,4 +17,4 @@ testJson = None
 with open('test.json') as json_file:
     testJson = json.load(json_file)
 
-db.addRecord(json.load(testJson))
+db.addRecord(testJson)
