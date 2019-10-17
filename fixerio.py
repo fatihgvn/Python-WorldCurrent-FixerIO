@@ -3,7 +3,7 @@
 
 # http://data.fixer.io/api/latest?access_key=3dbf1b2bc69f02ee7b1271afb9748f15
 
-import urllib, json
+import urllib, json, urllib.request
 from database import Database
 
 settings = None
@@ -11,10 +11,11 @@ settings = None
 with open('settings.json') as json_file:
     settings = json.load(json_file)
 
+apiurl = "http://data.fixer.io/api/latest?access_key=%s" % (settings['token'])
+
 db = Database(settings)
 
-testJson = None
-with open('test.json') as json_file:
-    testJson = json.load(json_file)
+with urllib.request.urlopen(apiurl) as url:
+    data = json.loads(url.read().decode())
 
-db.addRecord(testJson)
+    db.addRecord(data)
