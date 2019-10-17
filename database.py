@@ -29,6 +29,12 @@ class Database():
     def __del__(self):
         self.db.close()
 
+    def addRecord(self, data):
+        if(data['success'] == True):
+            sql = "INSERT INTO totals SET t_timestamp=%s, t_base='%s', t_date='%s'" % (data['timestamp'], data['base'], data['date'])
+
+            print(sql)
+
     def exec_sql_file(self, cursor, sql_file):
         statement = ""
 
