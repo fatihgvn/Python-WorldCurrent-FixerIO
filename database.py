@@ -30,10 +30,11 @@ class Database():
         self.db.close()
 
     def addRecord(self, data):
+        print(data)
         if(data['success'] == True):
-            sql = "INSERT INTO totals SET t_timestamp=%d, t_base='%s', t_date='%s'" % (data['timestamp'], data['base'], data['date'])
 
-            print(sql)
+            print("INSERT INTO totals SET t_timestamp=%d, t_base='%s', t_date='%s'" % (data['timestamp'], data['base'], data['date']))
+        
         else:
             print("not success")
 
