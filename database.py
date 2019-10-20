@@ -52,7 +52,7 @@ class Database():
             print("not success")
 
     def updateHistory(self, date):
-        sql = "SELECT name, sum(value), count(name) FROM totals_records GROUP BY name HAVING COUNT(*) >1;"
+        sql = "SELECT name, sum(value), count(name) FROM totals_records WHERE created_at>='%s' GROUP BY name HAVING COUNT(*) >1;" % (date)
 
         cursor = self.db.cursor()
 
