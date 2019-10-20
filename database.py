@@ -52,7 +52,7 @@ class Database():
             print("not success")
 
     def updateHistory(self, date):
-        sql = "SELECT name, sum(value), count(name), total_id FROM totals_records WHERE created_at>='%s' GROUP BY name HAVING COUNT(*) >1;" % (date)
+        sql = "SELECT name, sum(value), count(name) FROM totals_records WHERE created_at>='%s' GROUP BY name HAVING COUNT(*) >1;" % (date)
 
         cursor = self.db.cursor()
 
@@ -60,7 +60,7 @@ class Database():
             cursor.execute(sql)
             records = cursor.fetchall()
             for h in records:
-                sql = "INSERT INTO totals_history SET name='%s', value=%f, total_id=%d t_date='%s';" % (h[0], (h[1]/h[2]), h[3], date)
+                sql = "INSERT INTO totals_history SET name='%s', value=%f, t_date='%s';" % (h[0], (h[1]/h[2]), date)
                 cursor.execute(sql)
                 sql = "DELETE FROM totals_records WHERE name='%s' AND created_at>='%s';" % (h[0], date)
                 cursor.execute(sql)
