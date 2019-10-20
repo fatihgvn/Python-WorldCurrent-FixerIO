@@ -61,6 +61,7 @@ class Database():
             records = cursor.fetchall()
             for h in records:
                 sql = "INSERT INTO totals_history SET name='%s', value=%f, t_date='%s';" % (h[0], (h[1]/h[2]), date)
+                sql += "DELETE FROM totals_records WHERE name='%s' AND created_at>='%s';" % (h[0], date)
                 cursor.execute(sql)
 
         except Exception as ex:
