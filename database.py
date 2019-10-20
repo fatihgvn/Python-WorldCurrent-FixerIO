@@ -65,6 +65,7 @@ class Database():
 
         except Exception as ex:
             print(ex)
+        self.db.commit()
 
     def exec_sql_file(self, cursor, sql_file):
         statement = ""
