@@ -232,11 +232,13 @@ CREATE TABLE IF NOT EXISTS `totals` (
 
 CREATE TABLE IF NOT EXISTS `totals_history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `total_id` int(11) NOT NULL,
   `name` varchar(8) NOT NULL,
   `value` double NOT NULL,
   `t_date` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `total_id` (`total_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
