@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import urllib, json, urllib.request, sys
+import datetime
 from database import Database
 import argparse
 
@@ -27,4 +28,9 @@ if args.getNew or len(sys.argv) == 1:
         db.addRecord(data)
 
 elif args.updateHistory:
-    print("update history")
+
+    db = Database(settings)
+
+    lastday = datetime.date.today()-datetime.timedelta(1)
+
+    db.updateHistory(lastday.strftime('%Y-%m-%d'))

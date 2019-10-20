@@ -51,6 +51,20 @@ class Database():
         else:
             print("not success")
 
+    def updateHistory(self, date):
+        sql = "SELECT name FROM totals_records GROUP BY name HAVING COUNT(*) >1"
+
+        cursor = self.db.cursor()
+
+        try:
+            cursor.execute(sql)
+            records = cursor.fetchall()
+            for names in records:
+                print(names)
+
+        except Exception as ex:
+            print(ex)
+
     def exec_sql_file(self, cursor, sql_file):
         statement = ""
 
