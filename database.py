@@ -52,15 +52,16 @@ class Database():
             print("not success")
 
     def updateHistory(self, date):
-        sql = "SELECT name FROM totals_records GROUP BY name HAVING COUNT(*) >1"
+        sql = "SELECT name, sum(value), count(name) FROM totals_records GROUP BY name HAVING COUNT(*) >1;"
 
         cursor = self.db.cursor()
 
         try:
             cursor.execute(sql)
             records = cursor.fetchall()
-            for names in records:
-                print(names)
+            for h in records:
+                sql = "INSERT INTO totals_history SET name='%s', value=%f, t_date='%s';" % (h[0], (h[1]/h[2]), date)
+                cursor.execute(sql)
 
         except Exception as ex:
             print(ex)
