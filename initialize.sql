@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 17, 2019 at 07:59 PM
+-- Generation Time: Oct 20, 2019 at 05:57 PM
 -- Server version: 10.1.41-MariaDB-0+deb9u1
 -- PHP Version: 7.0.33-0+deb9u5
 
@@ -74,7 +74,7 @@ INSERT INTO `current_info` (`id`, `name`, `short`, `created_at`) VALUES
 (32, 'Chilean Peso', 'CLP', '2019-10-17 19:57:57'),
 (33, 'Chinese Yuan', 'CNY', '2019-10-17 19:57:57'),
 (34, 'Colombian Peso', 'COP', '2019-10-17 19:57:57'),
-(35, 'Costa Rican Colón', 'CRC', '2019-10-17 19:57:57'),
+(35, 'Costa Rican Col?n', 'CRC', '2019-10-17 19:57:57'),
 (36, 'Cuban Convertible Peso', 'CUC', '2019-10-17 19:57:57'),
 (37, 'Cuban Peso', 'CUP', '2019-10-17 19:57:57'),
 (38, 'Cape Verdean Escudo', 'CVE', '2019-10-17 19:57:57'),
@@ -109,7 +109,7 @@ INSERT INTO `current_info` (`id`, `name`, `short`, `created_at`) VALUES
 (67, 'Indian Rupee', 'INR', '2019-10-17 19:57:57'),
 (68, 'Iraqi Dinar', 'IQD', '2019-10-17 19:57:57'),
 (69, 'Iranian Rial', 'IRR', '2019-10-17 19:57:57'),
-(70, 'Icelandic Króna', 'ISK', '2019-10-17 19:57:57'),
+(70, 'Icelandic Kr?na', 'ISK', '2019-10-17 19:57:57'),
 (71, 'Jersey Pound', 'JEP', '2019-10-17 19:57:57'),
 (72, 'Jamaican Dollar', 'JMD', '2019-10-17 19:57:57'),
 (73, 'Jordanian Dinar', 'JOD', '2019-10-17 19:57:57'),
@@ -147,7 +147,7 @@ INSERT INTO `current_info` (`id`, `name`, `short`, `created_at`) VALUES
 (105, 'Mozambican Metical', 'MZN', '2019-10-17 19:57:57'),
 (106, 'Namibian Dollar', 'NAD', '2019-10-17 19:57:57'),
 (107, 'Nigerian Naira', 'NGN', '2019-10-17 19:57:57'),
-(108, 'Nicaraguan Córdoba', 'NIO', '2019-10-17 19:57:57'),
+(108, 'Nicaraguan C?rdoba', 'NIO', '2019-10-17 19:57:57'),
 (109, 'Norwegian Krone', 'NOK', '2019-10-17 19:57:57'),
 (110, 'Nepalese Rupee', 'NPR', '2019-10-17 19:57:57'),
 (111, 'New Zealand Dollar', 'NZD', '2019-10-17 19:57:57'),
@@ -174,8 +174,8 @@ INSERT INTO `current_info` (`id`, `name`, `short`, `created_at`) VALUES
 (132, 'Sierra Leonean Leone', 'SLL', '2019-10-17 19:57:57'),
 (133, 'Somali Shilling', 'SOS', '2019-10-17 19:57:57'),
 (134, 'Surinamese Dollar', 'SRD', '2019-10-17 19:57:57'),
-(135, 'São Tomé and Príncipe Dobra', 'STD', '2019-10-17 19:57:57'),
-(136, 'Salvadoran Colón', 'SVC', '2019-10-17 19:57:57'),
+(135, 'S?o Tom? and Pr?ncipe Dobra', 'STD', '2019-10-17 19:57:57'),
+(136, 'Salvadoran Col?n', 'SVC', '2019-10-17 19:57:57'),
 (137, 'Syrian Pound', 'SYP', '2019-10-17 19:57:57'),
 (138, 'Swazi Lilangeni', 'SZL', '2019-10-17 19:57:57'),
 (139, 'Thai Baht', 'THB', '2019-10-17 19:57:57'),
@@ -192,7 +192,7 @@ INSERT INTO `current_info` (`id`, `name`, `short`, `created_at`) VALUES
 (150, 'United States Dollar', 'USD', '2019-10-17 19:57:57'),
 (151, 'Uruguayan Peso', 'UYU', '2019-10-17 19:57:57'),
 (152, 'Uzbekistan Som', 'UZS', '2019-10-17 19:57:57'),
-(153, 'Venezuelan Bolívar Fuerte', 'VEF', '2019-10-17 19:57:57'),
+(153, 'Venezuelan Bol?var Fuerte', 'VEF', '2019-10-17 19:57:57'),
 (154, 'Vietnamese Dong', 'VND', '2019-10-17 19:57:57'),
 (155, 'Vanuatu Vatu', 'VUV', '2019-10-17 19:57:57'),
 (156, 'Samoan Tala', 'WST', '2019-10-17 19:57:57'),
@@ -217,9 +217,24 @@ INSERT INTO `current_info` (`id`, `name`, `short`, `created_at`) VALUES
 
 CREATE TABLE IF NOT EXISTS `totals` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `t_timestamp` timestamp NULL DEFAULT NULL,
+  `t_timestamp` int(11) DEFAULT NULL,
   `t_base` varchar(8) NOT NULL,
   `t_date` date DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `totals_history`
+--
+
+CREATE TABLE IF NOT EXISTS `totals_history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(8) NOT NULL,
+  `value` double NOT NULL,
+  `t_date` date NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

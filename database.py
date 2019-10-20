@@ -18,7 +18,7 @@ class Database():
         cursor.execute("SHOW TABLES;")
         records = cursor.fetchall()
 
-        tables = ['current_info','totals','totals_records']
+        tables = ['current_info','totals','totals_records','totals_history']
         tblCounter = 0
         for tbl in records:
             if tbl[0] in tables:
